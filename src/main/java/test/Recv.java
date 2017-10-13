@@ -40,7 +40,7 @@ public class Recv {
 
             public void handleDelivery(String s, Envelope envelope, AMQP.BasicProperties basicProperties, byte[] bytes) throws IOException {
                 String message=new String(bytes,"UTF-8");
-                System.out.println("\" [x] Received '\" + message + \"'\"");
+                System.out.println("[x] Received " + message + "'");
             }
         };
         channel.basicConsume(QUEUE_NAME,true,consumer);
