@@ -19,6 +19,7 @@ public class RPCClient {
         ConnectionFactory connectionFactory=new ConnectionFactory();
         connectionFactory.setHost("localhost");
         connection = connectionFactory.newConnection();
+        channel = connection.createChannel();
         replyQueueName = channel.queueDeclare().getQueue();
     }
 
