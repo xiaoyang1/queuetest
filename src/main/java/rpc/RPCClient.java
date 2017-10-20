@@ -2,6 +2,8 @@ package rpc;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingDeque;
@@ -37,6 +39,7 @@ public class RPCClient {
                 }
             }
         });
+        //当服务器没有返回时，由于阻塞队列为空。所以take方法会一直阻塞，直到有元素返回为止。
         return response.take();
     }
 

@@ -3,6 +3,7 @@ package test;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
+import java.util.Stack;
 
 public class Recv {
     private  final  static  String QUEUE_NAME="hello";
@@ -15,6 +16,7 @@ public class Recv {
 
         channel.queueDeclare(QUEUE_NAME,false,false,false,null);
         System.out.println(" [ * ] waiting for messages. to exit press CTRL+C ");
+
 
         Consumer consumer=new Consumer() {
             public void handleConsumeOk(String s) {
@@ -36,7 +38,6 @@ public class Recv {
             public void handleRecoverOk(String s) {
 
             }
-
 
             public void handleDelivery(String s, Envelope envelope, AMQP.BasicProperties basicProperties, byte[] bytes) throws IOException {
                 String message=new String(bytes,"UTF-8");
